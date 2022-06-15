@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import {Contract} from "@ethersproject/contracts";
-import { Button, NumberInput,  NumberInputField,  FormControl,  FormLabel, Text,Link,Heading } from '@chakra-ui/react'
-import {BadgeTokenABI} from "abi/BadgeTokenABI"
+import { Contract } from "@ethersproject/contracts";
+import { Button, NumberInput, NumberInputField, FormControl, FormLabel, Text, Link, Heading } from '@chakra-ui/react'
+import { BadgeTokenABI } from "abi/BadgeTokenABI"
 import { TransactionResponse, TransactionReceipt } from "@ethersproject/providers"
 
 interface Props {
@@ -35,7 +35,6 @@ export default function MintNFT(props:Props){
     event.preventDefault()
     if(!(active && account && library)) return
 
-    // new contract instance with **signer**
     const token = new Contract(addressContract, BadgeTokenABI, library.getSigner());
     token.mintTo(tokenId).then((response:TransactionResponse)=>{
 
@@ -43,13 +42,11 @@ export default function MintNFT(props:Props){
       
       setStatusTokenCheck(CHECK_AVAILABLE.Uncheck)
 
-      console.log(response)
-
+      console.log(response)//can we use response.wait() here?
 
     })
     .catch('error', console.error)
   }
-
 
 
 
@@ -60,9 +57,8 @@ export default function MintNFT(props:Props){
     setTokenId(num)
     setStatusTokenCheck(CHECK_AVAILABLE.Uncheck)
     setStatusMint(MINT_STATUS.Normal)
-    console.log(num)
+    // console.log(num)
   }
-
 
 
 
@@ -123,6 +119,7 @@ useEffect(() => {
 
 
 
+
   const renderCheckSwitch =(param:CHECK_AVAILABLE)=> {
     switch(param) {
       case CHECK_AVAILABLE.Available:
@@ -138,7 +135,6 @@ useEffect(() => {
 
 
 
-
   const renderMintSwitch =(param:MINT_STATUS)=> {
     switch(param) {
       case MINT_STATUS.Pending:
@@ -150,46 +146,44 @@ useEffect(() => {
     }
   }  
 
+
+
   return (
     <div>
-          <Heading my={4}  fontSize='3xl' as='h2'>Mint NFT </Heading>
-          <Text fontSize='md' mb={8}>获取一个 🥝 Web3Elite (WE) NFT 🥝，这一 Polygon 链 NFT 的图片为助记词单词。</Text>
+      <Heading my={4}  fontSize='3xl' as='h2'>Mint NFT </Heading>
+      <Text fontSize='md' mb={8}>获取一个 🥝 Web3Elite (WE) NFT 🥝，这一 Polygon 链 NFT 的图片为助记词单词。</Text>
 
-        <form onSubmit={mint}>
-          <FormControl>
+      <form onSubmit={mint}>
+        <FormControl>
           <FormLabel mb={4} fontSize='xl' >输入 0-999 之间的数字 </FormLabel>
           <FormLabel mb={4} >这个数字将是你的 NFT 的 tokenID，若某数字对应的 NFT 已存在，你将不能成功 mint。 </FormLabel>
 
-            <NumberInput 
-              size='lg' maxW={32}  my={2} 
-              defaultValue={tokenId}
-              value ={tokenId} onChange={handleChange}  >
+            <NumberInput size='lg' maxW={32}  my={2} 
+              defaultValue={tokenId} value ={tokenId} onChange={handleChange}  >
               <NumberInputField />
             </NumberInput>
 
             <FormLabel mt={8} fontSize='xl'>1. 先检查 tokenID 是否可用 </FormLabel>
 
-            <Button my={2}  size='lg' onClick={checkAvailable} 
-              isDisabled={!account }>
+            <Button my={2} size='lg' onClick={checkAvailable} isDisabled={!account }>
                 Check
             </Button>
 
             <Text mb={4} >{renderCheckSwitch(statusTokenCheck)} </Text>
 
-            <FormLabel mt={8}  fontSize='xl' >2. 再按 Mint NFT（需要钱包中有 MATIC）  </FormLabel>
+            <FormLabel mt={8} fontSize='xl' >2. 再按 Mint NFT（需要钱包中有 MATIC）  </FormLabel>
 
-            <Button my={2} type="submit" size='lg' colorScheme='messenger'
-              isDisabled={!account  }>
+            <Button my={2} type="submit" size='lg' colorScheme='messenger' isDisabled={!account  }>
                 Mint NFT
             </Button>
+
             <Text mb={4} >{renderMintSwitch(statusMint)} </Text>
             <Link href='https://opensea.io/collection/web3elite-v2' isExternal color='teal.500'>
             OpenSea 查看 Web3Elite NFT ( 成功 mint 后，通常需稍等片刻，才可在 Opensea 上看到。)
             </Link>
-
-
-          </FormControl>
-        </form>
+        </FormControl>
+      </form>
     </div>
   )
+  
 }
