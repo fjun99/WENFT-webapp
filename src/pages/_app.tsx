@@ -5,7 +5,7 @@ import { Layout } from 'components/layout'
 import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 
-import theme from './theme'
+import theme from '../theme/theme'
 
 function getLibrary(provider: any): Web3Provider {
   const library = new Web3Provider(provider)
