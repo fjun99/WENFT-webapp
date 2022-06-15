@@ -1,12 +1,10 @@
 // src/pages/index.tsx
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import NextLink from "next/link"
-import { VStack, Heading, Box, LinkOverlay, LinkBox} from "@chakra-ui/layout"
-import { Text, Button } from '@chakra-ui/react'
-import ConnectMetamask from 'components/ConnectMetamask'
+import { VStack, Heading, Box} from "@chakra-ui/layout"
 import { addressContract }  from '../constants'
 import MintNFT from 'components/MintNFT'
+import ConnectMetamask from 'components/ConnectMetamask'
 
 const Home: NextPage = () => {
   // const addressContract='0x5fbdb2315678afecb367f032d93f642f64180aa3'

@@ -20,7 +20,7 @@ export const BadgeTokenABI = [
   ];
 
 
-/* get Minimal Human-Readable ABI using ethers.js
+/* == get Minimal Human-Readable ABI using ethers.js ==
 
 abifile = require("./artifacts/contracts/BadgeToken.sol/BadgeToken.json")
 
