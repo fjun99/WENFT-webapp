@@ -146,7 +146,7 @@ useEffect(() => {
       case MINT_STATUS.Success:
         return 'Sucess Mint NFT成功';
       default:
-        return 'mint 成功后可在 Opensea 查看（不先检查 tokenID 直接 mint 可能不能成功）';
+        return 'mint 成功后可在 Opensea 查看（不先检查 tokenID 直接 mint ，可能不能成功）';
     }
   }  
 
