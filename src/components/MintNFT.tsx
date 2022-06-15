@@ -126,13 +126,13 @@ useEffect(() => {
   const renderCheckSwitch =(param:CHECK_AVAILABLE)=> {
     switch(param) {
       case CHECK_AVAILABLE.Available:
-        return '你输入的 tokenId 可用';
+        return '你输入的 tokenID 可用';
       case CHECK_AVAILABLE.UnAvailable:
-        return '你输入的 tokenId 不可用';
+        return '你输入的 tokenID 不可用';
       case CHECK_AVAILABLE.Checking:
         return '检查中，等待链上反馈...';
       default:
-        return '请先检查是否可用 （tokenId 需唯一，不可重复）';
+        return '请先检查是否可用 （tokenID 需唯一，不可重复）';
     }
   }  
 
@@ -146,7 +146,7 @@ useEffect(() => {
       case MINT_STATUS.Success:
         return 'Sucess Mint NFT成功';
       default:
-        return 'mint 成功后可在 Opensea 查看（不先检查tokenId直接 mint 可能不能成功）';
+        return 'mint 成功后可在 Opensea 查看（不先检查 tokenID 直接 mint 可能不能成功）';
     }
   }  
 
@@ -158,7 +158,7 @@ useEffect(() => {
         <form onSubmit={mint}>
           <FormControl>
           <FormLabel mb={4} fontSize='xl' >输入 0-999 之间的数字 </FormLabel>
-          <FormLabel mb={4} >这个数字将是你的 NFT 的 tokenId，若某数字对应的 NFT 已存在，你将不能成功 mint。 </FormLabel>
+          <FormLabel mb={4} >这个数字将是你的 NFT 的 tokenID，若某数字对应的 NFT 已存在，你将不能成功 mint。 </FormLabel>
 
             <NumberInput 
               size='lg' maxW={32}  my={2} 
@@ -167,7 +167,7 @@ useEffect(() => {
               <NumberInputField />
             </NumberInput>
 
-            <FormLabel mt={8} fontSize='xl'>1. 先检查 tokenId 是否可用 </FormLabel>
+            <FormLabel mt={8} fontSize='xl'>1. 先检查 tokenID 是否可用 </FormLabel>
 
             <Button my={2}  size='lg' onClick={checkAvailable} 
               isDisabled={!account }>
