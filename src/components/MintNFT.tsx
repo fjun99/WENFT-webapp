@@ -184,7 +184,7 @@ useEffect(() => {
             </Button>
             <Text mb={4} >{renderMintSwitch(statusMint)} </Text>
             <Link href='https://opensea.io/collection/web3elite-v2' isExternal color='teal.500'>
-              在 Web3Elite V2 @OpenSea 查看 ( 说明： 成功mint后通过需稍等片刻才可在Opensea查看到。)
+            OpenSea 查看 Web3Elite NFT ( 成功 mint 后，通常需稍等片刻，才可在 Opensea 上看到。)
             </Link>
 
 
